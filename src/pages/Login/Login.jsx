@@ -1,25 +1,26 @@
 import React, { useContext } from "react";
 import "./Login.css"; // CSS dosyası için
-import { ReactComponent as Women } from "../../assests/icons/login.svg";
+import Women from "../../assests/icons/login.svg";
 import { LoginContext } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { user, setUser } = useContext(LoginContext);
+  // const { user, setUser } = useContext(LoginContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Giriş işlemleri için burada API çağrısı yapılabilir
-    console.log("Giriş yapıldı:", { user });
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Giriş işlemleri için burada API çağrısı yapılabilir
+  //   console.log("Giriş yapıldı:", { user });
 
-    navigate(-1);
-  };
+  //   navigate(-1);
+  // };
 
   return (
-    <div className="login-form-container">
-      <Women className="lady" />
+    <div className="loginDiv">
+      <h1>login</h1>
+      {/* <img className="lady" src={Women} alt="" />
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Log in</h2>
         <div className="form-group">
@@ -60,21 +61,22 @@ function Login() {
           <label htmlFor="file">
             {user.image ? `${user.image.name}` : "Choose Picture"}
           </label>
-          {user.image ? (
-            <button
-              onClick={(e) => {
-                setUser({ ...user, image: "" });
-              }}
-              className="remove-pp"
-            >
-              x
-            </button>
-          ) : (
-            ""
-          )}
         </div>
+        {user.image ? (
+          <sup
+            onClick={(e) => {
+              setUser({ ...user, image: "" });
+            }}
+            id="remove-pp"
+          >
+            remove image <sup>X</sup>
+          </sup>
+        ) : (
+          ""
+        )}
+
         <button type="submit">Log in</button>
-      </form>
+      </form> */}
     </div>
   );
 }

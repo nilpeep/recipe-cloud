@@ -22,6 +22,7 @@ body {
   height: 60px;
   background-color: #fef7e5;
   position: relative;
+  z-index: 1;
 }
 
 .logo-text {
@@ -37,6 +38,7 @@ body {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+  align-items: center;
 }
 
 .nav-elements ul li:not(:last-child) {

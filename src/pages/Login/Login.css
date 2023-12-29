@@ -116,12 +116,14 @@ button:hover {
   background-color: #0056b3;
 }
 
-.remove-pp {
-  background-color: red;
-  border-radius: 100%;
-  width: 1.5rem;
-  height: 1.5rem;
-  box-sizing: content-box;
+#remove-pp {
+  background-color: rgb(247, 124, 124);
+  padding: 3px;
+  color: rgb(52, 49, 45);
+  border-radius: 5px;
+  box-sizing: initial;
+  cursor: pointer;
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
@@ -141,12 +143,14 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 80%;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
   }
   .lady {
-    width: 80%;
+    width: 30%;
+    display: none;
   }
 }
