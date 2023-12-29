@@ -5,6 +5,7 @@ body {
   padding: 0;
   font-family: "Poppins", sans-serif;
   background-color: #fcfcfc;
+  box-sizing: border-box;
 }
 
 .container {
@@ -23,7 +24,9 @@ body {
   position: relative;
 }
 
-.logo {
+.logo-text {
+  text-decoration: none;
+  color: black;
 }
 
 .menu-icon {
@@ -54,6 +57,9 @@ body {
   color: #574c4c;
   font-weight: 500;
   position: relative;
+}
+.nav-elements ul a:hover {
+  color: #887979;
 }
 
 .nav-elements ul a.active::after {

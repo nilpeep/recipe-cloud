@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Hamburger from "../../assests/icons/noodle.svg";
+import Hamburger from "../../assests/icons/hamburger.svg";
 // import { ReactComponent as Brand } from "../../assets/icons/logo.svg";
 import "./Navbar.css";
 import UserPng from "../../assests/icons/user.svg";
@@ -17,8 +17,18 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <div className="logo" style={{ display: "flex", alignItems: "center" }}>
-          <img style={{ width: "50px" }} src={Noodle} alt="" />
-          <span style={{ fontSize: "24px" }}>RecipeCloud</span>
+          <NavLink
+            to="/"
+            style={{
+              textDecoration: "none",
+              fontSize: "24px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img style={{ width: "50px" }} src={Noodle} alt="" />
+            <p className="logo-text"> RecipeCloud</p>
+          </NavLink>
         </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
           <img src={Hamburger} alt="" />
@@ -39,7 +49,7 @@ const Navbar = () => {
             <li>
               <img src={UserPng} alt="" style={{ width: "30px" }} />
               <NavLink style={{ position: "absolute" }} to="/login">
-                Log in
+                Log out
               </NavLink>
             </li>
           </ul>
