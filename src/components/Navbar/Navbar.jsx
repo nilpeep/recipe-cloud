@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Hamburger from "../../assests/icons/hamburger.svg";
+import logout from "../../assests/icons/logout.svg";
 // import { ReactComponent as Brand } from "../../assets/icons/logo.svg";
 import "./Navbar.css";
 import UserPng from "../../assests/icons/user.svg";
 import Noodle from "../../assests/icons/noodle.svg";
+import { LoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+
+  const { user, setUser } = useContext(LoginContext);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -47,10 +51,43 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <img src={UserPng} alt="" style={{ width: "30px" }} />
-              <NavLink style={{ position: "absolute" }} to="/login">
-                Log out
-              </NavLink>
+              {user.email && user.password ? (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1.2rem",
+                  }}
+                >
+                  <NavLink style={{ display: "flex", alignItems: "center" }}>
+                    <img
+                      className="profile-picture"
+                      src={
+                        user.image ? URL.createObjectURL(user.image) : UserPng
+                      }
+                      alt="Profile"
+                      style={{ width: "30px" }}
+                    />
+                    <span>{user.email}</span>
+                  </NavLink>
+                  <img
+                    onClick={() =>
+                      setUser({ email: "", password: "", image: "" })
+                    }
+                    src={logout}
+                    alt=""
+                    style={{ width: "30px", cursor: "pointer" }}
+                  />
+                </div>
+              ) : (
+                <NavLink
+                  style={{ display: "flex", alignItems: "center" }}
+                  to="/login"
+                >
+                  <img src={UserPng} alt="" style={{ width: "30px" }} />
+                  <span>Log in</span>
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

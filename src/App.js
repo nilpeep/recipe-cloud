@@ -8,11 +8,12 @@ import About from "./pages/About/About";
 import { LoginContext } from "./context/LoginContext";
 import { useState } from "react";
 function App() {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "", image: null });
+  const [login, setLogin] = useState({ logged: false });
   return (
     <div className="App">
-      <LoginContext.Provider value={{ user, setUser }}>
-        <Navbar />
+      <LoginContext.Provider value={{ user, setUser, login, setLogin }}>
+        {user.password && user.email ? <Navbar /> : ""}
 
         <Routes>
           <Route path={"/"} element={<PrivateRouter />}>
