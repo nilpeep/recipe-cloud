@@ -2,13 +2,19 @@ import React, { useContext } from "react";
 import "./Login.css"; // CSS dosyası için
 import { ReactComponent as Women } from "../../assests/icons/login.svg";
 import { LoginContext } from "../../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { user, setUser } = useContext(LoginContext);
+  const { user, setUser, createUser, logIn, signUpProvider } =
+    useContext(LoginContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Giriş işlemleri için burada API çağrısı yapılabilir
+    createUser(user.email, user.password);
+
     console.log("Giriş yapıldı:", { user });
   };
 
@@ -37,7 +43,23 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Log in</button>
+        <button
+          className="loginBtn"
+          type="button"
+          onClick={() => logIn(user.email, user.password)}
+        >
+          Sign in
+        </button>
+        <button className="loginBtn" type="submit">
+          Register
+        </button>
+        <button
+          onClick={() => signUpProvider()}
+          className="loginBtn"
+          type="button"
+        >
+          Signup with google
+        </button>
       </form>
     </div>
   );

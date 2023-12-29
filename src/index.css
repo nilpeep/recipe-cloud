@@ -13,3 +13,14 @@
     @apply flex justify-center items-center min-h-screen;
   }
 }
+
+.recipes {
+  background-color: #ff9636;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  flex-direction: column;
+}

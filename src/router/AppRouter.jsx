@@ -10,11 +10,11 @@ import Recipes from "../pages/Recipes/Recipes";
 const AppRouter = () => {
   return (
     <div>
-      <h1>AppRouter</h1>
       <Routes>
         <Route path={"/"} element={<PrivateRouter />}>
-          <Route index path={""} element={<Recipes />} />
-          <Route path={"/about"} element={<About />} />
+          <Route index path={"recipes"} element={<Recipes />} />
+          <Route index path={"recipes/detail/:id"} element={<Detail />} />
+          <Route path={"about"} element={<About />} />
         </Route>
 
         <Route path={"/login"} element={<Login />} />

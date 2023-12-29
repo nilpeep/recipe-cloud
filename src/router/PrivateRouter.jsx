@@ -4,10 +4,10 @@ import { LoginContext } from "../context/LoginContext";
 import Navbar from "../components/Navbar/Navbar";
 
 const PrivateRouter = () => {
-  const { user } = useContext(LoginContext);
+  const { user, currentUser } = useContext(LoginContext);
   return (
     <div>
-      {user.email && user.password ? (
+      {currentUser ? (
         <>
           <Navbar />
           <Outlet />

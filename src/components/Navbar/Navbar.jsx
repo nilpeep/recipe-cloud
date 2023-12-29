@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Hamburger from "../../assests/icons/hamburger.svg";
 // import { ReactComponent as Brand } from "../../assets/icons/logo.svg";
 import "./Navbar.css";
 import UserPng from "../../assests/icons/user.svg";
 import Noodle from "../../assests/icons/noodle.svg";
+import { LoginContext } from "../../context/LoginContext";
+import logout from "../../assests/icons/logout.svg";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+
+  const { logOut, currentUser } = useContext(LoginContext);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -18,7 +22,7 @@ const Navbar = () => {
       <div className="container">
         <div className="logo" style={{ display: "flex", alignItems: "center" }}>
           <NavLink
-            to="/"
+            to="/recipes"
             style={{
               textDecoration: "none",
               fontSize: "24px",
@@ -36,7 +40,7 @@ const Navbar = () => {
         <div className={`nav-elements  ${showNavbar && "active"}`}>
           <ul>
             <li>
-              <NavLink to="/">Recipes</NavLink>
+              <NavLink to="/recipes">Recipes</NavLink>
             </li>
             <li>
               <NavLink to="/about">About</NavLink>
@@ -47,10 +51,28 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <img src={UserPng} alt="" style={{ width: "30px" }} />
-              <NavLink style={{ position: "absolute" }} to="/login">
-                Log out
-              </NavLink>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <img
+                  src={currentUser?.photoURL || UserPng}
+                  alt=""
+                  style={{ width: "30px" }}
+                />
+                <NavLink to="/login">
+                  {currentUser && currentUser.email}
+                </NavLink>
+                <img
+                  onClick={() => logOut()}
+                  className="logout"
+                  src={logout}
+                  alt=""
+                />
+              </div>
             </li>
           </ul>
         </div>

@@ -25,6 +25,10 @@ body {
   z-index: 1;
 }
 
+.logout {
+  width: 30px;
+}
+
 .logo-text {
   text-decoration: none;
   color: black;
